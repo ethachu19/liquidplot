@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.name.liquidplot.main;
+package com.aeternum.liquidplot.main;
 
-import com.name.liquidplot.communication.ServerIO;
-import com.name.liquidplot.utils.CommonUtils;
+import com.aeternum.liquidplot.communication.ServerIO;
+import com.aeternum.liquidplot.utils.CommonUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;

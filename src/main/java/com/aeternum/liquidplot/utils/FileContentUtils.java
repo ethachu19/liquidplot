@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.name.liquidplot.utils;
+package com.aeternum.liquidplot.utils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
