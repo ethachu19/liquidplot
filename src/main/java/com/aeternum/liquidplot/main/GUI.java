@@ -7,6 +7,7 @@ package com.aeternum.liquidplot.main;
 
 import com.aeternum.liquidplot.communication.ServerIO;
 import com.aeternum.liquidplot.utils.OsCheck;
+import com.mashape.unirest.http.Unirest;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
@@ -196,7 +197,7 @@ public class GUI extends javax.swing.JFrame {
             ServerIO.runScript(new File(bashText.getText()));
         }
         if (sftp.isSelected() && !sftpText.getText().equals("")) {
-            ServerIO.sendFile(new File(sftpText.getText()), "~/Documents/labRobo/misc/");
+            ServerIO.sendFile(new File(sftpText.getText()));
         }
         if (command.isSelected() && !commandText.getText().equals("")) {
             ServerIO.runCommand(commandText.getText());
@@ -271,8 +272,8 @@ public class GUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         JFrame currentWindow = new GUI();
-        try {
-            ServerIO.openClient();
+//        try {
+//            ServerIO.openClient();
             System.out.println("Opened Server");
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
@@ -287,8 +288,7 @@ public class GUI extends javax.swing.JFrame {
                         @Override
                         public void windowClosing(WindowEvent e) {
                             try {
-                                ServerIO.closeClient();
-                                System.out.println("Closed Server");
+                                Unirest.shutdown();
                             } catch (IOException ex) {
                                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -321,11 +321,11 @@ public class GUI extends javax.swing.JFrame {
                     });
                 }
             });
-        } catch (UnknownHostException ex) {
-            JOptionPane.showMessageDialog(null, "Unable to find device: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        } catch (UnknownHostException ex) {
+//            JOptionPane.showMessageDialog(null, "Unable to find device: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//        } catch (IOException ex) {
+//            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 //        finally {
 //            try {
 //                ServerIO.closeClient();
