@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aeternum.liquidplot.main;
+package com.aetertech.liquidplot.main;
 
-import com.aeternum.liquidplot.communication.ServerIO;
-import com.aeternum.liquidplot.utils.OsCheck;
+import com.aetertech.liquidplot.communication.ServerIO;
+import com.aetertech.liquidplot.utils.OsCheck;
 import com.mashape.unirest.http.Unirest;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aeternum.liquidplot.communication;
+package com.aetertech.liquidplot.communication;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -20,11 +20,11 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class ServerIO {
 
-    private final static String server = "ethanPi";
+    private final static String server = "localhost:8080";
     
     public static boolean runCommand(String command) {
         try {
-            HttpResponse<JsonNode> response = Unirest.post(server).field("command", command).asJson();
+            HttpResponse<JsonNode> response = Unirest.post(server).field("run", command).asJson();
         } catch (UnirestException ex) {
             return false;
         }
@@ -45,7 +45,7 @@ public class ServerIO {
             throw new IllegalArgumentException("File was not a bash script");
         try {
             HttpResponse<JsonNode> fileResponse = Unirest.put(server).field("bash",script).asJson();
-            HttpResponse<JsonNode> commandResponse = Unirest.post(server).field("run", "bash/"+script.getName()).asJson();
+            HttpResponse<JsonNode> commandResponse = Unirest.post(server).field("run", "sh/"+script.getName()).asJson();
             return true;
         } catch (UnirestException ex) {
             Logger.getLogger(ServerIO.class.getName()).log(Level.SEVERE, null, ex);
